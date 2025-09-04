@@ -75,8 +75,8 @@ Finally, all these parameters are combined to estimate the received power at the
 
 <img width="1173" height="726" alt="image" src="https://github.com/user-attachments/assets/0078bb83-d362-4efe-b5b3-171fdf9c8501" />
 
+**Figure 8**: Received power
 
-**Figure 8**: received power 
 ---
 ## summary 
 This project delivers a well-structured, browser-based microwave link planning tool designed for high accuracy, usability, and realism. By combining precise geodesic calculations, dynamic link budget analysis, and support for multiple map views, the tool offers a practical and intuitive environment for engineers and researchers. From frequency allocation to received power estimation, each feature is seamlessly integrated to reflect real-world conditions. The result is a reliable, easy-to-use platform that supports informed decision-making and professional network design—all from within the browser.
