@@ -1,3 +1,6 @@
+# Web Microwave Planning Tool (WavePlan)
+
+
 ## 🌐 Overview
 
 A web-based interactive tool was developed for microwave link planning and design, aimed at enabling engineers and researchers to simulate wireless infrastructure with high precision and realism—directly from the browser and without the need for any additional software. To enhance the accuracy of the planning process, the tool supports three distinct map layers: OpenStreetMap for flexible visualization of roads and buildings, Satellite View for high-resolution terrain and natural features, and Terrain View to highlight the geographical factors affecting link quality. This combination of mapping options allows users to simulate network layouts in urban, rural, and mountainous environments with realistic visual context, leading to more accurate technical assessments and better-informed engineering decisions.
