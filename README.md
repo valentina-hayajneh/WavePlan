@@ -73,8 +73,8 @@ quality
 
 Finally, all these parameters are combined to estimate the received power at the destination antenna (in this project we using the parabolic antenna ) ,This comprehensive calculation allows users to evaluate link feasibility, detect potential issues, and adjust design parameters in real-time, ensuring optimal network performance.
 
-
 <img width="1173" height="726" alt="image" src="https://github.com/user-attachments/assets/0078bb83-d362-4efe-b5b3-171fdf9c8501" />
+
 
 **Figure 8**: received power 
 ---
