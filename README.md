@@ -1,4 +1,4 @@
-# Web Microwave Planning Tool (WavePlan)
+#  WavePlan – Web Microwave Link Planning Tool
 
 
 ## 🌐 Overview
