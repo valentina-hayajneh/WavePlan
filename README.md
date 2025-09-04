@@ -1,44 +1,70 @@
-# Wireless Microwave Link Planning Tool
-<img width="1373" height="876" alt="image" src="https://github.com/user-attachments/assets/693e7c9f-e782-4f1d-84c7-f9723cc7b83a" />
+## 🌐 Overview
 
+A web-based interactive tool was developed for microwave link planning and design, aimed at enabling engineers and researchers to simulate wireless infrastructure with high precision and realism—directly from the browser and without the need for any additional software. To enhance the accuracy of the planning process, the tool supports three distinct map layers: OpenStreetMap for flexible visualization of roads and buildings, Satellite View for high-resolution terrain and natural features, and Terrain View to highlight the geographical factors affecting link quality. This combination of mapping options allows users to simulate network layouts in urban, rural, and mountainous environments with realistic visual context, leading to more accurate technical assessments and better-informed engineering decisions.
 
-This interactive web-based application is tailored for wireless microwave link planning and analysis between tower sites. Designed with engineers, planners, and geospatial professionals in mind, the tool offers a rich, map-based interface for placing towers, drawing links, and computing link performance metrics.
+<img width="1916" height="852" alt="image" src="https://github.com/user-attachments/assets/0f617158-f6d1-4a1b-abc8-c96026c32117" />
 
-🧭 Overview and Functionality
-Users can dynamically add tower markers to a map with custom properties such as type, height, and location coordinates. These towers can then be connected via microwave links, enabling detailed link budget calculations, which consider parameters like transmitted power, antenna gain, cable and connector losses, and free-space path loss. The tool calculates critical values such as RX power. 
+**Figure 1**: Tool’s main interface with satellite view
+---
 
-The application provides several map layers including satellite imagery, OpenStreetMap, and terrain elevation, allowing users to visualize the environment and assess feasibility more accurately. Users can also toggle labels, markers, and layer visibility for a more customizable experience.
+## How It Works
+Users start by placing tower markers anywhere on the map, where they can assign custom names, heights, and tower types such as lattice, monopole, or guyed towers. These towers can then be linked together using microwave links.
 
-⚙️ Core Features
-Antenna Configuration Panels: Detailed UI panels allow users to set antenna type, diameter, height, efficiency, and gain values (manual or auto-computed).
+## Topology Support: Star & Ring
 
-Link Budget Calculator: Computes complete signal path losses including TX/RX losses, connector types, cable lengths, and generates the final RX power.
+To support more advanced network design, the tool includes built-in topology options—specifically Star and Ring formations. These structures are commonly used in real-world microwave networks to improve redundancy, efficiency, and scalability.
 
-Interference Detection: A basic mechanism highlights frequency conflicts and link intersections that may cause signal interference.
+In Star topology, all microwave links originate from a central tower (hub) and connect to surrounding nodes. This setup is ideal for centralized architectures such as rural internet distribution or urban backhaul centers.
 
-Network Topologies: The tool supports predefined topologies such as Star and Ring, automatically arranging nodes.
+<img width="886" height="690" alt="image" src="https://github.com/user-attachments/assets/d0593edf-1101-48b4-b412-156d1564036c" />
 
-Search & Geolocation: Built-in search bar allows users to find specific locations or enter lat/lon directly.
+**Figure 2**: Star topoly 
 
-Project Management: Users can create, save, and export projects, including the option to export links as KML files for GIS platforms.
-#Screenshots & Descriptions:
-Pic 1:  
-This interface displays a detailed satellite view of a city with multiple markers indicating key locations. Users can utilize the search bar to quickly find any location by name or coordinates. Additionally, an "Add Marker" button allows users to easily place new markers (towers) on the map, enabling dynamic updates and customization of the network layout.
+In Ring topology, towers are connected in a closed loop. This allows for fault tolerance—if one link fails, data can still circulate in the opposite direction.
 
-Pic 2:  
-This interface displays the tower's properties, allowing users to search for or manually add a tower. It provides the tower’s name with the option to edit it, the ability to select the tower type and height, and automatically stores the tower's coordinates (marker) from the map upon placement.
+<img width="809" height="731" alt="image" src="https://github.com/user-attachments/assets/63133b5a-6038-4bc2-a6aa-8dc1e7333ac5" />
 
-Pic 3:  
-This web application supports two types of topologies: Star topology, where the first added tower acts as the central hub connected to surrounding towers, and Ring topology, which creates a closed loop starting from the first added tower and connecting sequentially to others. This sequential setup ensures that the initial tower defines the topology’s starting point, whether as a center in star topology or the beginning of the ring in ring topology.
+**Figure 3**: Ring topology
 
-Pic 4:  
-This interface displays the link properties between towers, allowing users to specify the cable type, length, number of connectors, and connector quality for both transmission and reception. Based on these inputs, the system automatically calculates the total signal loss, ensuring accurate and efficient network planning.
+These topology modes save significant time during design and help simulate realistic multi-point or resilient networks efficiently. All link budget calculations, frequency assignments, and path loss estimations are automatically applied per link, even in complex topologies.
 
-Pic 5:  
-Link properties between two selected towers. It shows the distance in meters and kilometers, transmission frequency (GHz), TX power (dBm), antenna height, and diameter. The system is designed to use a fixed Parabolic antenna type for all microwave links to ensure high-gain and directional transmission efficiency.
+The tool performs detailed link budget calculations to ensure microwave links are planned with high accuracy and reliability. This process begins by calculating the precise distances between towers using the Vincenty formula, which accounts for the Earth's ellipsoidal shape to achieve sub-meter accuracy—much more precise than simpler formulas like Haversine.The tool performs detailed link budget calculations to ensure microwave links are planned with high accuracy and reliability.
 
-Pic 6:  
-This interface displays extended link properties between two selected towers. It includes detailed antenna specifications such as the fixed Parabolic type, diameter, aperture area, and wavelength. It also shows calculated values like TX/RX gain (dB), Free Space Path Loss (FSPL), and received power (RX Power). These parameters ensure accurate link budget estimation and reliable microwave communication planning.
+<img width="1226" height="476" alt="image" src="https://github.com/user-attachments/assets/1f15d099-9b18-424c-8806-5513eff4f25b" />
 
-Pic 7:  
-This image shows the interference detection feature in action. It identifies overlapping microwave links (MW Link 1 and MW Link 2) that are using the same frequency (8 GHz) at a common tower location. The conflict is visually highlighted in red, and a detailed popup provides the interference type and affected tower coordinates, helping users quickly resolve frequency planning issues.
+**Figure 4**: distance between two markers(towers) located in Irbid
+
+Based on these distances, the tool dynamically assigns appropriate frequency bands to each link, optimizing for path loss, antenna size, and data rate requirements,Accordingly, short-range links under 1 km utilize the 38 GHz band, suitable for dense urban cores, whereas longer links up to 20 km use lower frequency bands such as 18 GHz to maintain stable connections over greater distances. 
+This distance-based frequency allocation was integrated into the planning tool to automate frequency assignment
+
+<img width="592" height="353" alt="image" src="https://github.com/user-attachments/assets/a3921b50-92a8-4b59-b54d-ef36eeee8c62" />
+
+**Figure 5**: approved frequencies according to the  distance
+
+Next, the tool calculates the Free Space Path Loss (FSPL) using the standard logarithmic equation, considering both the frequency and distance. This helps estimate the expected signal attenuation over the link.
+
+Antenna gain is then factored in, based on antenna size and frequency, which enhances the signal strength in the desired direction.
+
+<img width="604" height="221" alt="image" src="https://github.com/user-attachments/assets/ee184cef-c4dc-49eb-87b5-36e21fdaa529" />
+
+**Figure 6**: FSPL and antenna gain for two towers allocated in Irbid 
+
+**Note**:  antenna gain is calculated automatically ,but user can exchange the value according to the required design 
+---
+The tool also accounts for cable and connector losses based on the type, the supported cable types include LMR-400, LMR-600, RG-58, RG-213, Heliax-1/2, Heliax-7/8, 
+and Waveguide, each exhibiting unique attenuation characteristics , as illustrated in Figure 5, in addition to cable losses, connector losses are also taken into consideration based on the number 
+of connectors and their quality classification. Each connector introduces a fixed attenuation depending on its quality: 0.1 dB for high quality, 0.25 dB for medium quality, and 0.5 dB for low 
+quality
+
+<img width="601" height="565" alt="image" src="https://github.com/user-attachments/assets/9bd55309-41ca-4c4b-8f5f-efd32662591b" />
+
+**Figure 7**: cable losses 
+
+Finally, all these parameters are combined to estimate the received power at the destination antenna (in this project we using the parabolic antenna ) ,This comprehensive calculation allows users to evaluate link feasibility, detect potential issues, and adjust design parameters in real-time, ensuring optimal network performance.
+
+<img width="1173" height="726" alt="image" src="https://github.com/user-attachments/assets/0078bb83-d362-4efe-b5b3-171fdf9c8501" />
+
+**Figure 8**: received power 
+---
+## summary 
+This project delivers a well-structured, browser-based microwave link planning tool designed for high accuracy, usability, and realism. By combining precise geodesic calculations, dynamic link budget analysis, and support for multiple map views, the tool offers a practical and intuitive environment for engineers and researchers. From frequency allocation to received power estimation, each feature is seamlessly integrated to reflect real-world conditions. The result is a reliable, easy-to-use platform that supports informed decision-making and professional network design—all from within the browser.
