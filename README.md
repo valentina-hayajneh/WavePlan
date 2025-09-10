@@ -80,3 +80,16 @@ Finally, all these parameters are combined to estimate the received power at the
 ---
 ## summary 
 This project delivers a well-structured, browser-based microwave link planning tool designed for high accuracy, usability, and realism. By combining precise geodesic calculations, dynamic link budget analysis, and support for multiple map views, the tool offers a practical and intuitive environment for engineers and researchers. From frequency allocation to received power estimation, each feature is seamlessly integrated to reflect real-world conditions. The result is a reliable, easy-to-use platform that supports informed decision-making and professional network design—all from within the browser.
+
+---
+
+## Contact Me
+
+If you have any questions, suggestions, or would like to learn more about how this project works, please feel free to reach out to me via email:
+
+valentinahayajneh8@gmail.com
+
+I’m always available to answer your inquiries and support you in making the best use of this project.
+
+---
+
