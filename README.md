@@ -1,5 +1,3 @@
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=valentina-hayajneh.WavePlan)
-
 #  WavePlan – Web Microwave Link Planning Tool
 
 
